@@ -79,3 +79,138 @@ int compara_pontos(Ponto p1, Ponto p2) {
         return -1;
     }
 }
+
+No* aloca_no(Ponto p) {
+    No* noh = (No*)malloc(sizeof(No));
+    noh->ant = NULL;
+    noh->prox = NULL;
+    noh->p = p;
+}
+
+No* insere_no_depois(No* lista, No* inserido) {
+    No* aux = NULL;
+
+    aux = lista->prox;
+    lista->prox = inserido;
+    inserido->prox = aux;
+    inserido->ant = lista;
+    aux->ant = inserido;
+
+    return inserido;
+}
+
+No* insere_no_antes(No* lista, No* inserido) {
+    No* aux = NULL;
+    
+    aux = lista->ant;
+    lista->ant = inserido;
+    inserido->ant = aux;
+    inserido->prox = lista;
+
+    return inserido;
+}
+
+void retira_no(No* no, lista_pontos* lista) {
+    No* aux, *ativo_prox=NULL, *ativo_ant=NULL, *ativo=NULL;
+
+    lista->tam--;
+
+    if(no->prox) {
+        aux = no->prox;
+        aux->ant = no->ant;
+        ativo = ativo_prox = no->prox;
+    }
+    if(no->ant) {
+        aux = no->ant;
+        aux->prox = no->prox;
+        ativo = ativo_ant = no->ant;
+    }
+
+    if(no == lista->inicio) {
+        if(!ativo_ant)
+            lista->inicio = ativo;
+        else
+            lista->inicio = ativo_ant;
+    }
+    else if(no == lista->fim) {
+        if(!ativo_prox)
+            lista->fim = ativo;
+        else
+            lista->fim = ativo_prox;
+    }
+}
+
+lista_pontos* converte_lista(Pontos p) {
+    if(p.n < 1) {
+        return NULL;
+    }
+
+    lista_pontos* lista;
+    lista = (lista_pontos*)malloc(sizeof(lista_pontos));
+
+    
+    
+    lista->tam = p.n;
+    lista->inicio = aloca_no(p.v[0]);
+    if(p.n == 1) {
+        lista->fim = NULL;
+        return lista;
+    }
+    lista->fim = aloca_no(p.v[p.n - 1]);
+
+    int i;
+    No* aux, *iter;
+    iter = lista->inicio;
+    for(i=1; i < p.n-1; i++) {
+        aux = aloca_no(p.v[i]);
+        iter->prox = aux;
+        aux->ant = iter;
+        iter = aux;
+    }
+
+    iter->prox = lista->fim;
+    lista->fim->ant = iter;
+
+    return lista;
+}
+
+Pontos converte_vetor(lista_pontos* lista) {
+    No* iter = lista->inicio;
+
+    Pontos vetor;
+    vetor.v = (Ponto*)malloc(sizeof(Ponto)*lista->tam);
+    vetor.n = lista->tam;
+    
+    int i=0;
+    while(iter != NULL) {
+        vetor.v[i] = iter->p;
+        
+        i++;
+        iter = iter->prox;
+    }
+
+    return vetor;
+}
+
+void desaloca_lista(lista_pontos* lista) {
+    No* iter=lista->inicio, *aux;
+
+    while(iter != NULL) {
+        aux = iter;
+        iter = iter->prox;
+        free(aux);
+    }
+
+    free(lista);
+}
+
+void imprime_lista(lista_pontos* lista) {
+    No* iter=lista->inicio;
+
+    printf("%d: [", lista->tam);
+    while(iter != NULL) {
+        printf("%d %d, ", iter->p.x, iter->p.y);
+        iter = iter->prox;
+    }
+    printf("]\n");
+}

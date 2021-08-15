@@ -9,7 +9,7 @@ Arquivo lê os pontos, executa o algoritmo e escreve o fecho em fecho.txt
 
 #include "stdafx.h"
 #include "Pontos.h"
-#include "heuristica.c"
+#include "heuristica.h"
 
 int main (int argc, char* argv[]) {
 
@@ -24,7 +24,7 @@ int main (int argc, char* argv[]) {
     clock_t begin = clock();
 
     Pontos fecho = heuristica(p);
-    
+    //Pontos fecho = p;
     //termina de contar o tempo
     clock_t end = clock();
 
@@ -36,7 +36,7 @@ int main (int argc, char* argv[]) {
     grava_pontos(fecho, "fecho.txt");
 
     //desaloca vetores de pontos
-    free(p.v);
-    free(fecho.v);
+    //free(p.v);
+    //free(fecho.v);
     return 0;
 }

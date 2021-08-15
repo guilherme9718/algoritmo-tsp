@@ -24,11 +24,29 @@ typedef struct ponto {
 /* Estrutura Pontos
 Armazena em um vetor dinamicamente alocado um conjunto de pontos
 O vetor tem tamanho n 
-Usada nas leitura e escrite de pontos nos arquivos e no algoritmo do fecho convexo */
+Usada nas leitura e escrita de pontos nos arquivos e no algoritmo do fecho convexo */
 typedef struct vetor_pontos {
     Ponto* v;
     int n;
 } Pontos;
+
+/* Estrutura no_lista
+Armazena um nó da lista encadeada de pontos.
+Usada no algoritmo tsp para inserir nos no meio com custo zero */
+typedef struct no_lista {
+    Ponto p;
+    struct no_lista* prox;
+    struct no_lista* ant;
+} No;
+
+/* Estrutura no_lista
+Estrutura que contém a lista encadeada apontando para os nós do começo e do fim
+Usada no algoritmo tsp para inserir nos no meio com custo zero */
+typedef struct lista_pontos {
+    No* inicio;
+    No* fim;
+    int tam;
+} lista_pontos;
 
 //imprime na tela o ponto p (usado somente para teste)
 void _imprime_ponto(Ponto p);
@@ -71,4 +89,21 @@ Complexidade: O(1)
 Comentários: 
 */
 int compara_pontos(Ponto p1, Ponto p2);
+
+No* aloca_no(Ponto p);
+
+No* insere_no_depois(No* lista, No* inserido);
+
+No* insere_no_antes(No* lista, No* inserido);
+
+void retira_no(No* no, lista_pontos* lista);
+
+lista_pontos* converte_lista(Pontos p);
+
+Pontos converte_vetor(lista_pontos* lista);
+
+void desaloca_lista(lista_pontos* lista);
+
+void imprime_lista(lista_pontos* lista);
+
 #endif
