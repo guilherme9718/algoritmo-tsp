@@ -3,6 +3,9 @@ Projeto e Análise de Algoritmos
 Nome: Guilherme Aguilar de Oliveira
 RA: 2127954
 
+Nome: Heitor Derder Trevisol
+RA: 1611810
+
 Descrição do arquivo: 
 Arquivo lê os pontos, executa o algoritmo e escreve o fecho em fecho.txt
 */
@@ -10,6 +13,7 @@ Arquivo lê os pontos, executa o algoritmo e escreve o fecho em fecho.txt
 #include "stdafx.h"
 #include "Pontos.h"
 #include "heuristica.h"
+#include "quicksort.h"
 
 int main (int argc, char* argv[]) {
 

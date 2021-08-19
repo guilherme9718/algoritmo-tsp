@@ -3,6 +3,9 @@ Projeto e Análise de Algoritmos
 Nome: Guilherme Aguilar de Oliveira
 RA: 2127954
 
+Nome: Heitor Derder Trevisol
+RA: 1611810
+
 Descrição do arquivo: 
 Algoritmo de aproximação do caixeiro viajante
 */
@@ -12,6 +15,7 @@ Algoritmo de aproximação do caixeiro viajante
 #include "stdafx.h"
 #include "Pontos.h"
 #include "fecho_convexo.h"
+#include "quicksort.h"
 
 Pontos heuristica(Pontos entrada);
 

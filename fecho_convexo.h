@@ -3,6 +3,9 @@ Projeto e Análise de Algoritmos
 Nome: Guilherme Aguilar de Oliveira
 RA: 2127954
 
+Nome: Heitor Derder Trevisol
+RA: 1611810
+
 Descrição do arquivo: 
 Arquivo que contém algoritmo fecho convexo.
 */
