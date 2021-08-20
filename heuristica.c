@@ -1,9 +1,15 @@
 #include "heuristica.h"
 
 Pontos heuristica(Pontos entrada) {
-    Pontos fecho;
+    Pontos fecho, vetor_aux;
     fecho = fecho_convexo(entrada);
-
+    int i;
+    	
+    vetor_aux.v = (Ponto*)malloc(sizeof(Ponto)*fecho.n);
+    vetor_aux.n = 0;
+	for (i = 0; i < fecho.n; i++){
+		adiciona_ponto(&vetor_aux, fecho.v[i]);
+	}
     Pontos p_interno;
     int tam_interno = entrada.n - fecho.n;
 
@@ -15,14 +21,16 @@ Pontos heuristica(Pontos entrada) {
     p_interno.n = 0;
     
     //Fazer uma função para ordenar os pontos para melhorar a complexidade dessa atribuição
+    quicksort(vetor_aux, 0, vetor_aux.n-1);
+    
 
     //complexidade O(n^2) = RUIM
-    int i, j, flag;
+    //int i, j, flag;
     //printf("%d %d\n", entrada.n, fecho.n);
-    for(i = 0; i < entrada.n; i++) {
+    /*for(i = 0; i < entrada.n; i++) {
         flag = 1;
-        for(j = 0; j < fecho.n; j++) {
-            int cmp = compara_pontos(entrada.v[i], fecho.v[j]);
+        for(j = 0; j < teste.n; j++) {
+            int cmp = compara_pontos(entrada.v[i], teste.v[j]);
             //printf("%d %d - %d %d = %d\n", entrada.v[i].x, entrada.v[i].y, fecho.v[j].x, fecho.v[j].y, cmp);
             //se os pontos são diferentes
             if(!cmp) {
@@ -33,9 +41,13 @@ Pontos heuristica(Pontos entrada) {
         if(flag) {
             adiciona_ponto(&p_interno, entrada.v[i]);
         }
+    }*/
+    
+    for(i = 0; i < entrada.n; i++) {  
+    	if(busca_binaria(vetor_aux, entrada.v[i], 0, vetor_aux.n - 1))
+ 		adiciona_ponto(&p_interno, entrada.v[i]);
     }
 
-    //grava_pontos(p_interno, "fecho.txt");
 
     lista_pontos* lista_fecho, *lista_interno;
     lista_fecho = converte_lista(fecho);

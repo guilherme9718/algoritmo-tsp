@@ -21,4 +21,6 @@ int particiona(Pontos p, int esq, int dir);
 
 void quicksort(Pontos p, int esq, int dir);
 
+int busca_binaria(Pontos vetor, Ponto p, int esq, int dir);
+
 #endif

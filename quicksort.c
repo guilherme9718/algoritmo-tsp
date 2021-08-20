@@ -27,3 +27,18 @@ void quicksort(Pontos p, int esq, int dir) {
 		quicksort (p, pivo+1, dir); 
 	}
 }
+
+int busca_binaria(Pontos vetor, Ponto p, int esq, int dir) {
+	while (esq <= dir) {
+		int meio = (esq + dir ) / 2;
+		int controle = compara_pontos(vetor.v[meio], p);
+		if (controle == 0)
+			return 0;			
+		else if (controle == -1)
+			esq = meio + 1;
+		else
+			dir = meio - 1;
+	}
+	
+	return 1;
+}
