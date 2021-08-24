@@ -37,7 +37,7 @@ int main (int argc, char* argv[]) {
     printf("%.6lf\n", time_spent);
 
     //grava os pontos no arquivo fecho.txt
-    grava_pontos(fecho, "fecho.txt");
+    grava_pontos(fecho, "ciclo.txt");
 
     //desaloca vetores de pontos
     //free(p.v);
