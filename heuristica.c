@@ -20,28 +20,7 @@ Pontos heuristica(Pontos entrada) {
     p_interno.v = malloc(sizeof(Ponto)*tam_interno);
     p_interno.n = 0;
     
-    //Fazer uma função para ordenar os pontos para melhorar a complexidade dessa atribuição
     quicksort(vetor_aux, 0, vetor_aux.n-1);
-    
-
-    //complexidade O(n^2) = RUIM
-    //int i, j, flag;
-    //printf("%d %d\n", entrada.n, fecho.n);
-    /*for(i = 0; i < entrada.n; i++) {
-        flag = 1;
-        for(j = 0; j < teste.n; j++) {
-            int cmp = compara_pontos(entrada.v[i], teste.v[j]);
-            //printf("%d %d - %d %d = %d\n", entrada.v[i].x, entrada.v[i].y, fecho.v[j].x, fecho.v[j].y, cmp);
-            //se os pontos são diferentes
-            if(!cmp) {
-                flag=0;
-                break;
-            }
-        }
-        if(flag) {
-            adiciona_ponto(&p_interno, entrada.v[i]);
-        }
-    }*/
     
     for(i = 0; i < entrada.n; i++) {  
     	if(busca_binaria(vetor_aux, entrada.v[i], 0, vetor_aux.n - 1))
@@ -63,6 +42,7 @@ Pontos heuristica(Pontos entrada) {
     //imprime_lista(aux);
     calcula_heuristica(lista_fecho, lista_interno);
 
+	free(vetor_aux.v);
     free(fecho.v);
 
     fecho = converte_vetor(lista_fecho);

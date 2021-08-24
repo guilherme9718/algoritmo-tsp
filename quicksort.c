@@ -12,7 +12,7 @@ int particiona(Pontos p, int esq, int dir) {
 	int j;
 	for (j = esq; j <= dir - 1; j++) {
 		if (compara_pontos(p.v[j], pivo) <= 0) {
-			i += 1;
+			i++;
 			troca (p, i, j);
 		}
 	}
