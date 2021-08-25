@@ -27,6 +27,6 @@ void calcula_heuristica(lista_pontos* fecho, lista_pontos* entrada);
 
 No* calcula_minimo(lista_pontos* fecho, lista_pontos* entrada, No* p);
 
-long long int** aloca_matriz(int tam, int num);
+int** aloca_matriz(int tam, int num);
 
 #endif

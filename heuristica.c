@@ -1,6 +1,7 @@
 #include "heuristica.h"
+//#define TAM_ROTA
 
-long long int **custo;
+int **custo;
 No* **m_ponto;
 char *sujo;
 
@@ -87,6 +88,17 @@ Pontos heuristica(Pontos entrada) {
     //desaloca_lista(lista_fecho);
     //desaloca_lista(lista_interno);
     //free(p_interno.v);
+
+    #ifdef TAM_ROTA
+    double d1=0, d_aux;
+    Ponto p1_aux, p2_aux;
+    for(i=1; i < fecho.n; i++) {
+        p1_aux = fecho.v[i-1];
+        p2_aux = fecho.v[i];
+        d1 += sqrt(pow(p1_aux.x - p2_aux.x, 2) + pow(p1_aux.y - p2_aux.y, 2));
+    }
+    printf("tam da rota = %lf\n", d1);
+    #endif
 
     return fecho;
 }
@@ -187,13 +199,13 @@ No* calcula_minimo(lista_pontos* fecho, lista_pontos* entrada, No* p) {
     return p3;
 }
 
-long long int** aloca_matriz(int tam, int num) {
-    long long int i, j;
-    long long int **m = (long long int**)malloc(sizeof(long long int*)*tam);
+int** aloca_matriz(int tam, int num) {
+    int i, j;
+    int **m = (int**)malloc(sizeof(int*)*tam);
     for(i=0; i < tam; i++) {
-        m[i] = (long long int*)malloc(sizeof(long long int)*tam);
+        m[i] = (int*)malloc(sizeof(int)*tam);
         for(j = 0; j < tam; j++) {
-            m[i][j] = (long long int)num;
+            m[i][j] = (int)num;
         }
     }
     return m;
