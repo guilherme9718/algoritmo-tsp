@@ -6,6 +6,9 @@ RA: 2127954
 Nome: Heitor Derder Trevisol
 RA: 1611810
 
+Nome: Diego Mamprim Borges
+RA: 1937537
+
 Descrição do arquivo: 
 Arquivo para definir a estrutura de dados utilizada e suas funções auxiliares,
 no caso o ponto em si e um vetor de pontos.
@@ -88,26 +91,76 @@ void adiciona_ponto(Pontos *fecho, Ponto p);
 /* Função compara_pontos
 Entradas: dois pontos
 Saídas: 0 se os dois pontos são iguais, 1 se p1 > p2 e -1 se p1 < p2
-Descrição: compara dois pontos e retorna se são iguais ou indica qual é o maior;
+Descrição: compara dois pontos e retorna se são iguais ou indica qual é o maior
 Complexidade: O(1)
 Comentários: 
 */
 int compara_pontos(Ponto p1, Ponto p2);
 
+/* Função aloca_no
+Entradas: um ponto p
+Saídas: retorna o endereço do nó da lista
+Descrição: Aloca um nó de lista encadeada dinâmicamente
+Complexidade: O(1)
+Comentários: 
+*/
 No* aloca_no(Ponto p);
 
+/* Função insere_no_depois
+Entradas: um no na lista e um no a ser inserido
+Saídas: retorna o endereço do nó inserido na lista
+Descrição: insere o nó inserido depois do no lista
+Complexidade: O(1)
+Comentários: 
+*/
 No* insere_no_depois(No* lista, No* inserido);
 
+/* Função insere_no_antes
+Entradas: um no na lista e um no a ser inserido
+Saídas: retorna o endereço do nó inserido na lista
+Descrição: insere o nó inserido antes do no lista
+Complexidade: O(1)
+Comentários: 
+*/
 No* insere_no_antes(No* lista, No* inserido);
 
+/* Função retira_no
+Entradas: um no na lista e uma lista
+Saídas: 
+Descrição: retira o nó da lista porém não libera esse nó
+Complexidade: O(1)
+Comentários: 
+*/
 void retira_no(No* no, lista_pontos* lista);
 
+/* Função converte_lista
+Entradas: um vetor de pontos p
+Saídas: uma lista encadeada de pontos
+Descrição: converte o vetor de pontos em uma lista encadeada
+Complexidade: O(1)
+Comentários: 
+*/
 lista_pontos* converte_lista(Pontos p);
 
+/* Função converte_vetor
+Entradas: uma lista de pontos
+Saídas: um vetor de pontos
+Descrição: converte a lista encadeada em um vetor
+Complexidade: O(1)
+Comentários: 
+*/
 Pontos converte_vetor(lista_pontos* lista);
 
+/* Função desaloca_lista
+Entradas: uma lista de pontos
+Saídas:
+Descrição: desaloca uma lista encadeada de pontos
+Complexidade: O(1)
+Comentários: 
+*/
 void desaloca_lista(lista_pontos* lista);
 
+//imprime a lista encadeada (usada somente para teste)
 void imprime_lista(lista_pontos* lista);
 
 #endif

@@ -6,6 +6,9 @@ RA: 2127954
 Nome: Heitor Derder Trevisol
 RA: 1611810
 
+Nome: Diego Mamprim Borges
+RA: 1937537
+
 Descrição do arquivo: 
 Arquivo para agrupar todas as bibliotecas padrão do C utilizadas.
 */

@@ -61,6 +61,7 @@ void adiciona_ponto(Pontos *fecho, Ponto p) {
     fecho->n++;
 }
 
+//compara os pontos p1 e p2 
 int compara_pontos(Ponto p1, Ponto p2) {
     if(p1.x == p2.x) {
         if(p1.y == p2.y) {
@@ -81,6 +82,7 @@ int compara_pontos(Ponto p1, Ponto p2) {
     }
 }
 
+//aloca um no na memoria
 No* aloca_no(Ponto p) {
     No* noh = (No*)malloc(sizeof(No));
     noh->ant = NULL;
@@ -88,6 +90,7 @@ No* aloca_no(Ponto p) {
     noh->p = p;
 }
 
+//insere o nó no final da lista
 No* insere_no_depois(No* lista, No* inserido) {
     No* aux = NULL;
 
@@ -101,6 +104,7 @@ No* insere_no_depois(No* lista, No* inserido) {
     return inserido;
 }
 
+//insere o nó no inicio da fila
 No* insere_no_antes(No* lista, No* inserido) {
     No* aux = NULL;
     
@@ -112,6 +116,7 @@ No* insere_no_antes(No* lista, No* inserido) {
     return inserido;
 }
 
+//retira o nó da fila
 void retira_no(No* no, lista_pontos* lista) {
     No* aux, *ativo_prox=NULL, *ativo_ant=NULL, *ativo=NULL;
 
@@ -141,6 +146,7 @@ void retira_no(No* no, lista_pontos* lista) {
             lista->fim = ativo_prox;
     }
 }
+
 
 lista_pontos* converte_lista(Pontos p) {
     if(p.n < 1) {

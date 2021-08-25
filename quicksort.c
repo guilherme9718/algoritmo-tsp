@@ -1,11 +1,13 @@
 #include "quicksort.h"
 
+//inverte os a coordenada do vertice
 void troca(Pontos p, int i, int j) {
 	Ponto aux = p.v[i];
 	p.v[i] = p.v[j];
 	p.v[j] = aux;
 }
 
+//Particiona o vetor para comparar os pontos que estão contidos no vetor
 int particiona(Pontos p, int esq, int dir) {
 	Ponto pivo = p.v[dir];
 	int i = esq - 1;
@@ -20,6 +22,7 @@ int particiona(Pontos p, int esq, int dir) {
 	return i + 1;
 }
 
+// ordenação dos pontos quicksort recursivo
 void quicksort(Pontos p, int esq, int dir) {
 	if (esq < dir) {
 		int pivo = particiona (p, esq, dir);
@@ -28,6 +31,7 @@ void quicksort(Pontos p, int esq, int dir) {
 	}
 }
 
+//realiza a busca binaria do vetor do ponto no meio do vetor com o vetor esperado atraves do metodo compara_pontos
 int busca_binaria(Pontos vetor, Ponto p, int esq, int dir) {
 	while (esq <= dir) {
 		int meio = (esq + dir ) / 2;

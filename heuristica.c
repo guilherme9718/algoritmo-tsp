@@ -1,5 +1,4 @@
 #include "heuristica.h"
-//#define TAM_ROTA
 
 int **custo;
 No* **m_ponto;
@@ -8,6 +7,8 @@ char *sujo;
 Pontos heuristica(Pontos entrada) {
     Pontos fecho, vetor_aux;
     fecho = fecho_convexo(entrada);
+
+    grava_pontos(fecho, "fecho.txt");
     int i, j;
     	
     custo = aloca_matriz(entrada.n, -1);
@@ -46,6 +47,7 @@ Pontos heuristica(Pontos entrada) {
     p_interno.v = malloc(sizeof(Ponto)*tam_interno);
     p_interno.n = 0;
     
+    //ordena o vetor_aux
     quicksort(vetor_aux, 0, vetor_aux.n-1);
     
     //Faz subtração de conjuntos entrada - fecho
