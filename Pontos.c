@@ -11,7 +11,7 @@ void _imprime_pontos(Pontos p) {
 
     printf("%d\n", p.n);
     for(i = 0; i < p.n; i++) {
-        printf("%d %d\n", p.v[i].x, p.v[i].y);
+        printf("%d:%d %d\n", p.v[i].index, p.v[i].x, p.v[i].y);
     }
 }
 
@@ -35,6 +35,7 @@ Pontos le_pontos(char* arquivo) {
 
     for(i=0; i < tam; i++) {
         fscanf(file, "%d %d", &pontos.v[i].x, &pontos.v[i].y);
+        pontos.v[i].index = i;
     }
 
     fclose(file);
@@ -94,7 +95,8 @@ No* insere_no_depois(No* lista, No* inserido) {
     lista->prox = inserido;
     inserido->prox = aux;
     inserido->ant = lista;
-    aux->ant = inserido;
+    if(aux)
+        aux->ant = inserido;
 
     return inserido;
 }

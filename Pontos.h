@@ -22,6 +22,7 @@ Usada na Estrutura vetor_pontos para armazenar um conjunto de pontos */
 typedef struct ponto {
     int x;
     int y;
+    int index;
 } Ponto;
 
 /* Estrutura Pontos
